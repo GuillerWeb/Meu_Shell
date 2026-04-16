@@ -2,7 +2,7 @@ import os
 import sys
 
 def main():
-    print("---Bem-vindo ao GSP Shell--- \n")
+    print("<---Bem-vindo ao GSP Shell--->\n")
 
     while True:
         try:
@@ -36,8 +36,8 @@ def main():
 
         
         background = False
-        if argumentos and argumentos[-1] == '&':    # condição para detectar o & no final da lista de argumentos
-            background = True                       # background ativo, assim processo pai não precisa esperar filho
+        if argumentos and argumentos[-1] == '&':    # condição para detectar o '&' no final da lista de argumentos
+            background = True                       # assim processo pai não precisa esperar filho, logo o terminal é liberado enquanto processo filho esta em execução
             argumentos = argumentos[:-1]            # remove o '&' da lista de argumentos para não afetar o método execvp()
             
         elif comando_principal == '&':   # caso o usuário digitou só '&'
@@ -57,7 +57,7 @@ def main():
                 if len(argumentos) > 0:
                     destino = argumentos[0]
                 else:
-                    destino = os.path.expanduser("~")  # caso digite apenas o cd sem argumento retorna ao diretório home
+                    destino = os.path.expanduser("~")  # caso digite apenas o cd sem argumento retorna ao diretório home(~)
 
                 os.chdir(destino)                      # esse método que faz a troca de diretório dentro do kernel via system call
                 
@@ -68,7 +68,7 @@ def main():
             continue  
 
         elif comando_principal == "pwd":
-            print(os.getcwd())  # método que por meio do SO olha o PCB e retorna o diretório atual
+            print(os.getcwd())  # método que por meio do kernel, fornece o caminho do diretório em que o processo se encontra
             continue
 
         # ==========================================================
@@ -76,14 +76,13 @@ def main():
         # ==========================================================
         try:
 
-            pid = os.fork()  # vai gerar novos processos clones(filhos)
+            pid = os.fork()  # vai gerar novos processos clones(filhos) e retornar 0(processo filho) ou 1(processo pai)
 
-            if pid == 0:
+            if pid == 0:    
+                
                 # --- CÓDIGO DO PROCESSO FILHO ---
                 try:
-                    # os.execvp substitui um processo atual por um novo
-                    # primeiro parametro seria a localização do binário do meu comando
-                    # segundo parametro mostraria o comando e os argumentos usados
+                    # os.execvp substitui um processo atual por um novo, dando novo endereço de memória para o processo filho
                     os.execvp(comando_principal, [comando_principal] + argumentos)                    
                 
                 except FileNotFoundError:
