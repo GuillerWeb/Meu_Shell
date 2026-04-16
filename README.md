@@ -16,7 +16,7 @@ O shell foi desenvolvido seguindo as restrições estritas de não utilizar bibl
   - Suporte a execução em **Background** utilizando o operador `&`.
   - Sincronização entre pai e filho.
 
-## 🛠️ Tecnologias e Conceitos Utilizados
+##  Tecnologias e Conceitos Utilizados
 
 ### System Calls Implementadas
 Para que o Shell funcione, foram mapeadas as seguintes chamadas de sistema através do Python:
@@ -33,7 +33,7 @@ O Shell opera em um loop infinito seguindo estas etapas:
 3. **Análise de Contexto:** Identifica se é um comando interno ou se deve ser executado em background.
 4. **Execução:** O pai faz o `fork()`, o filho executa o `execvp()` e o pai decide se aguarda (`waitpid`) ou continua o loop.
 
-## 📸 Análise de Depuração
+##  Análise de Depuração
 
 O projeto inclui uma documentação técnica (PDF) com análises detalhadas utilizando as ferramentas:
 - **strace:** Para monitorar a interceptação das chamadas de sistema pelo Kernel.
