@@ -44,4 +44,4 @@ O projeto inclui uma documentação técnica (PDF) com análises detalhadas util
 1. Certifique-se de estar em um ambiente **Linux**, **WSL** ou **macOS**.
 2. Clone o repositório:
    ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+   git clone https://github.com/GuillerWeb/Meu_Shell.git
