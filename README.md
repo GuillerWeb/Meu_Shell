@@ -1,4 +1,4 @@
-# Custom Shell em Python (Sistemas Operacionais)
+# Custom Shell em Python
 
 Este projeto consiste na implementação de um interpretador de comandos (Shell) desenvolvido para a disciplina de Sistemas Operacionais da **Universidade Federal de Mato Grosso (UFMT)**. O objetivo principal é explorar a interface entre o espaço do usuário e o Kernel do Linux através de chamadas de sistema (System Calls) POSIX.
 
